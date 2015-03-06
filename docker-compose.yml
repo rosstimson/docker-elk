@@ -1,0 +1,16 @@
+elasticsearch:
+  image: elasticsearch:1.4
+
+logstash:
+  build: logstash
+  links:
+    - elasticsearch
+  stdin_open: true
+  tty: true
+
+kibana:
+  build: kibana
+  links:
+    - elasticsearch
+  ports:
+    - 5601:5601
